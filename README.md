@@ -9,3 +9,6 @@ Students must **replace** this README with a README that is specific to your
 project. **IMPORTANT**: If you do not complete the README, your project will not
 be graded, and you will receive a zero. The TA will not guess how to set up,
 configure, and run your project.
+
+
+I am struggling to figure out how to add the correct code so it functions how it's wanted. 

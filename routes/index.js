@@ -19,20 +19,23 @@ router.get('/', function(req, res, next){
 
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
-    try {
-      req.db.query('INSERT INTO todos (task) VALUES (?);', [task], (err, results) => {
-        if (err) {
-          console.error('Error adding todo:', err);
-          return res.status(500).send('Error adding todo');
-        }
-        console.log('Todo added successfully:', results);
-        // Redirect to the home page after adding
-        res.redirect('/');
-      });
-    } catch (error) {
-      console.error('Error adding todo:', error);
-      res.status(500).send('Error adding todo');
-    }
+    // if (req.body !== "") {
+      try {
+        req.db.query('INSERT INTO todos (task) VALUES (?);', [task], (err, results) => {
+          if (err || task == "") {
+            console.error('Error adding todo:', err);
+            return res.status(500).send('Error adding todo');
+          }
+          console.log('Todo added successfully:', results);
+          // Redirect to the home page after adding
+          res.redirect('/');
+        });
+      
+      } catch (error) {
+        console.error('Error adding todo:', error);
+        res.status(500).send('Error adding todo');
+      }
+    //}
 });
 
 router.post('/delete', function (req, res, next) {
